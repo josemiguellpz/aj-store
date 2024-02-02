@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
-import ThemePalette from '../Styles/ThemePalette';
+import { Palette, Breakpoints } from '../Styles/Theme';
 
 // Contexto para el tema
 const ThemeContext = createContext();
@@ -9,33 +9,31 @@ const ThemeContext = createContext();
 export const useThemeContext = () => useContext(ThemeContext);
 
 const lightTheme = createTheme({
+  breakpoints: Breakpoints,
   palette: {
+    primary: Palette.lightMode,
     mode: 'light',
-    primary: {
-      main: '#ffffff', 
+    background: {
+      paper: '#ffffff',
     },
-    // Otros colores para el modo claro
   },
 });
 
 const darkTheme = createTheme({
+  breakpoints: Breakpoints,
   palette: {
+    primary: Palette.darkMode,
     mode: 'dark',
-    primary: {
-      main: '#000000', 
+    background: {
+      paper: '#000000',
     },
-    // Otros colores para el modo oscuro
   },
 });
 
-export default ThemePalette;
-
 export const ThemeProvider = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
-  const toggleDarkMode = () => {
-    setDarkMode((prevMode) => !prevMode);
-  };
+  const toggleDarkMode = () => setDarkMode((prevMode) => !prevMode) ;
 
   const theme = darkMode ? darkTheme : lightTheme;
 

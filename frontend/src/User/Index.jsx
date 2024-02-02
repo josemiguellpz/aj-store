@@ -1,19 +1,20 @@
 // import { useState } from 'react'
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
+import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Container from '@mui/material/Container'
-import Typography from '@mui/material/Typography'
-import NavBar from '../Components/NavBar'
-import Footer from '../Components/Footer'
+import Container from '@mui/material/Container';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import Typography from '@mui/material/Typography';
+import Button from '../Components/Button';
+import NavBar from '../Components/NavBar';
+import Footer from '../Components/Footer';
 // import { useThemeContext } from '../Components/ThemeProvider';
-import logo from 'C:\\Users\\josemiguel\\Desktop\\images\\logo.jpg'
-import iPhones from 'C:\\Users\\josemiguel\\Desktop\\images\\AppleShopMtz1.webp'
-import Cases from 'C:\\Users\\josemiguel\\Desktop\\images\\Cases-Airpods.webp'
-import Accesories from 'C:\\Users\\josemiguel\\Desktop\\images\\Accesories.webp'
+import logo from 'C:\\Users\\josemiguel\\Desktop\\images\\logo.jpg';
+import iPhones from 'C:\\Users\\josemiguel\\Desktop\\images\\AppleShopMtz1.webp';
+import Cases from 'C:\\Users\\josemiguel\\Desktop\\images\\Cases-Airpods.webp';
+import Accesories from 'C:\\Users\\josemiguel\\Desktop\\images\\Accesories.webp';
 
 function Index() {
 
@@ -47,11 +48,11 @@ function Index() {
                   iPhones
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Consulta cualquier modelo de tu preferencia
+                  Consulta cualquier modelo de tu preferencia.
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button color='inherit' size="small">Ver más</Button>
+                <Button title={'Ver más'}onClick={null} variant={"contained"} size={"small"} endIcon={<NavigateNextIcon/>}/>
               </CardActions>
             </Card>
             
@@ -65,11 +66,11 @@ function Index() {
                   Cases
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Para que tu iPhone esté a salvo del agua, polvo y golpes.
+                  Protege tu iPhone del agua, polvo y golpes.
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button color='inherit' size="small">Ver más</Button>
+                <Button title={'Ver más'}onClick={null} variant={"contained"} size={"small"} endIcon={<NavigateNextIcon/>}/>
               </CardActions>
             </Card>
             
@@ -87,14 +88,14 @@ function Index() {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button color='inherit' size="small">Ver más</Button>
+                <Button title={'Ver más'}onClick={null} variant={"contained"} size={"small"} endIcon={<NavigateNextIcon/>}/>
               </CardActions>
             </Card>
           </Box>
         </Box>
 
         <Box sx={{ border:'solid', width:'100%'}}>
-          <Typography variant='h2'>Nosotros</Typography>
+          <Typography variant='h2' sx={{pt: '1.6rem', pb: '1.6rem'}}>Nosotros</Typography>
         </Box>
       </Container>
       <Footer/>

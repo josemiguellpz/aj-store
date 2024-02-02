@@ -3,6 +3,7 @@ import Container from "@mui/material/Container";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
+import SendIcon from '@mui/icons-material/Send';
 import TextField from '@mui/material/TextField';
 import Typography from "@mui/material/Typography";
 import { Facebook, Instagram, Twitter } from "@mui/icons-material";
@@ -31,7 +32,7 @@ export default function Footer() {
             <Typography variant="h6" color="text.primary" gutterBottom sx={{ textTransform: 'uppercase' }}>
               Compartenos tus ideas
             </Typography>
-            <Button title={"Ir"} onClick={null} variant={"contained"} size={"small"}/>
+            <Button title={"Envíanos tus ideas"} onClick={null} variant={"contained"} size={"small"} endIcon={<SendIcon/>}/>
           </Grid>
           
           <Grid item xs={12} sm={4}>

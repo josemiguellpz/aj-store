@@ -21,8 +21,13 @@ const Button = ({
       size={size}
       variant={variant}
       sx={{...sx, 
-        backgroundColor: (theme) => theme.palette.primary.main, 
+        backgroundColor: '#efb810', 
+        fontWeight: 'bold',
+        color: 'black',
         '&:focus': { outline: 'none', },
+        '&:hover': {
+          backgroundColor: '#efb810', 
+        },
       }}
     >
       {title}
