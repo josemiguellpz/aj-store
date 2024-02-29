@@ -57,7 +57,7 @@ export default function Footer() {
             <Typography variant="h6" color="text.primary" gutterBottom sx={{ textTransform: 'uppercase' }}>
               Siguenos en
             </Typography>
-            <Link href="#" color="inherit">
+            <Link href="https://www.facebook.com/profile.php?id=61550820530934" color="inherit">
               <Facebook />
             </Link>
             <Link

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import { Palette, Breakpoints } from '../Styles/Theme';
 
@@ -37,13 +37,21 @@ export const ThemeProvider = ({ children }) => {
 
   const theme = darkMode ? darkTheme : lightTheme;
 
-  if (darkMode) {
-    document.body.classList.add('dark-mode');
-    document.body.classList.remove('light-mode');
-  } else {
-    document.body.classList.add('light-mode');
-    document.body.classList.add('dark-mode');
-  }
+  useEffect (() => {
+    if (darkMode) {
+      document.body.classList.add('dark-mode');
+      document.body.classList.remove('light-mode');
+    } else {
+      document.body.classList.add('light-mode');
+      document.body.classList.add('dark-mode');
+    }
+
+    return () => {
+      document.body.classList.remove('dark-mode');
+      document.body.classList.remove('light-mode');
+    };
+
+  }, [darkMode]);
 
   // Proporciona el tema y función de alternar por medio del contexto
   return (
