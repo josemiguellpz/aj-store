@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { Button as Btn } from "@mui/material";
 
 const Button = ({
+  type,
   disabled,
   endIcon,
   onClick,
@@ -14,6 +15,7 @@ const Button = ({
   return(
     <Btn
       color='inherit'
+      type={type}
       disabled={disabled}
       endIcon={endIcon}
       onClick={onClick}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import AppleIcon from '@mui/icons-material/Apple';
 import Box from '@mui/material/Box';
@@ -7,19 +8,24 @@ import Container from '@mui/material/Container';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import IconButton from '@mui/material/IconButton';
 import LightModeIcon from '@mui/icons-material/LightMode';
+import Login from './Login';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { useThemeContext } from './ThemeProvider';
 import { styled } from '@mui/system';
+
+/* TODO: Change Button */
 
 // Remove border on click component
 const IconButtonX = styled(IconButton)(({theme}) =>({
   '&:focus': { outline: 'none', },
 }));
 const ButtonX = styled(Button)(({theme}) =>({
+  my: 2, color: 'inherit', display: 'block',  marginRight:'3rem',
   '&:focus': { outline: 'none', },
 }));
 
@@ -34,6 +40,19 @@ export default function ResponsiveAppBar() {
 
   // Close menu
   const handleClose = () => setAnchorEl(null);
+
+  /* // Navigate
+  const navigate = useNavigate();
+  const handlePage = (route) => (event) => navigate(route); */
+  const scrollSection = (id) =>{
+    const section = document.getElementById(id);
+    section.scrollIntoView({behavior: "smooth"});
+  }
+
+  // Modal
+  const [modal, setModal] = useState(false);
+  const handleOpenModal = () => setModal(true);
+  const handleCloseModal = () => setModal(false);
 
   return (
     <AppBar enableColorOnDark>
@@ -57,17 +76,12 @@ export default function ResponsiveAppBar() {
           
           {/* Desktop : Buttons */}
           <Box sx={{ flexGrow: 1, justifyContent: 'end', paddingRight:'3rem', display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <ButtonX
-                key={page}
-                onClick={null}
-                sx={{ my: 2, color: 'inherit', display: 'block',  paddingRight:'3rem'}}
-              >
-                {page}
-              </ButtonX>
-            ))}
-            <IconButtonX onClick={toggleDarkMode} color='inherit' >
-              { darkMode ? <DarkModeIcon/> : <LightModeIcon/>}
+            <ButtonX key='home' onClick={() => scrollSection("home")} > Inicio </ButtonX>
+            <ButtonX key='products' onClick={() => scrollSection("products")} > Productos </ButtonX>
+            <ButtonX key='about-us' onClick={() => scrollSection("about-us")} > Nosotros </ButtonX>
+            <ButtonX key='login' onClick={handleOpenModal} > Login </ButtonX>
+            <IconButtonX onClick={null} sx={{mr: 3}}>
+              <ShoppingBagIcon/>
             </IconButtonX>
           </Box>
 
@@ -88,11 +102,10 @@ export default function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={null}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              <ButtonX key='home' onClick={() => scrollSection("home")} > Inicio </ButtonX>
+              <ButtonX key='products' onClick={() => scrollSection("products")} > Productos </ButtonX>
+              <ButtonX key='about-us' onClick={() => scrollSection("about-us")} > Nosotros </ButtonX>
+              <ButtonX key='login' onClick={handleOpenModal} > Login </ButtonX>
             </Menu>
           </Box>
 
@@ -113,14 +126,13 @@ export default function ResponsiveAppBar() {
             AppleShopMtz
           </Typography>
 
-          {/* Responsive: Dark Mode */}
-          <IconButtonX 
-            onClick={toggleDarkMode} 
-            color='inherit' 
-            sx={{display: { xs: 'flex', md: 'none', }}}
-          >
-            { darkMode ? <DarkModeIcon/> : <LightModeIcon/>}
-          </IconButtonX>
+          <Box sx={{display: {xs: 'flex', md: 'none '}}}>
+            <IconButtonX onClick={null} >
+              <ShoppingBagIcon/>
+            </IconButtonX>
+          </Box>
+          
+          <Login open={modal} handleClose={handleCloseModal} />
         </Toolbar>
       </Container>
     </AppBar>

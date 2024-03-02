@@ -30,9 +30,9 @@ export default function Footer() {
 
           <Grid item xs={12} sm={4} sx ={{ justifyContent:"center"}}>
             <Typography variant="h6" color="text.primary" gutterBottom sx={{ textTransform: 'uppercase' }}>
-              Compartenos tus ideas
+              Compartenos tu opinión
             </Typography>
-            <Button title={"Envíanos tus ideas"} onClick={null} variant={"contained"} size={"small"} endIcon={<SendIcon/>}/>
+            <Button title={"Opiniones"} onClick={null} variant={"contained"} size={"small"} endIcon={<SendIcon/>}/>
           </Grid>
           
           <Grid item xs={12} sm={4}>

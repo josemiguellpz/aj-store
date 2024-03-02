@@ -32,15 +32,14 @@ const Img = styled('img')({
 function Index() {
 
   return (
-    <div  style={{paddingTop: '14vh' }}>
-      <NavBar/>
+    <div id='home' style={{paddingTop: '14vh' }}>
       <Container>
           {/* sx={{ border:'solid blue',  }} */}
           {/* sx={{ border:'solid red',   }} */}
           {/* sx={{ border:'solid yellow',}} */}
           {/* sx={{ border:'solid green', }} */}
           {/* TODO: Change Images, Move to Page section */}
-        <Box sx={{ width:'100%', pt: '1.6rem', pb: '1.6rem' }}>
+        <Box  sx={{ width:'100%', pt: '1.6rem', pb: '1.6rem' }}>
           <Paper elevation={3} sx={{p: 2, maxWidth: '100%', flexGrow: 1, pt: '2.5rem', pb: '2.5rem',}}>
             <Grid container sx={{ gap: {xs: 1, md: 0} }} padding='2.5rem'>
               <Grid item >
@@ -53,7 +52,7 @@ function Index() {
                 <Grid item xs container direction="column" >
                   <Grid item xs container direction="column" sx={{ justifyContent: {xs: 'center', md: ''} }}>
                     <Typography variant='h2' gutterBottom  component="div" sx={{display: {xs: 'none', md: 'block'}}}>
-                      Apple Shop Mtz
+                      APPLESHOPMTZ
                     </Typography>
                     <Typography variant="h4" gutterBottom >
                       Productos originales
@@ -71,9 +70,9 @@ function Index() {
           </Paper>
         </Box>
           
-        <Box sx={{ width:'100%', pt: '1.6rem', pb: '1.6rem'}}>
+        <Box id='products' sx={{ width:'100%', pt: '1.6rem', pb: '1.6rem'}}>
           <Typography variant='h2' sx={{pb: '3.2rem', color: '#efb810', textShadow: '0px 0px 9px #efb810'}}>
-            Nuestros productos
+            NUESTROS PRODUCTOS
           </Typography>
           <Container spacing={2} >
             <Grid container justifyContent="center" spacing={2} sx={{gap: {xs:3, sm:0, md:0}}}>
@@ -131,22 +130,22 @@ function Index() {
           </Container>
         </Box>
 
-        <Box sx={{width:'100%', height: '100%', pt: '1.6rem', pb: '3.6rem', }}>
+        <Box id='about-us' sx={{width:'100%', height: '100%', pt: '1.6rem', pb: '3.6rem', }}>
           <Typography variant='h2' sx={{pt: '1.6rem', pb: '3.2rem', color: '#efb810', textShadow: '0px 0px 9px #efb810'}}>
-            Nosotros / Conocenos
+            CONOCENOS
           </Typography>
 
           <Container sx={{maxHeight: '100rem', }}>
             <Grid container xs={12} justifyContent='space-around' sx={{gap: {xs: 4, md: 0}, }}>
               <Grid item  >
-                <Card sx={{ maxWidth: 700 }}  >
+                <Card sx={{ maxWidth: 900, height: '110vh' }}  >
                   <CardMedia image={Staff} sx={{ height: 500, width: 500, objectFit: 'contain' }} />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      Amai Aguilera x Jafet Uriostigue
+                      Amai Aguilera & Jafet Uriostigue
                     </Typography>
                     <Typography color='text.secondary' >
-                      Emprendedores e ingenieros {/* Borrachos pero buenos muchachos */}
+                      Emprendedores e ingenieros
                     </Typography>
                   </CardContent>
                   <CardActions>
@@ -160,14 +159,11 @@ function Index() {
                 <Grid item sx={{ background: '#000', borderRadius: '10px', }}>
                   <Typography variant='h6'  sx={{ padding: '2rem', }}>
                     En AppleShopMtz estamos comprometidos con ofrecer la mejor atención y calidad en nuestros productos. 
-                    Te ayudamos a encontrar el equipo ideal para ti.
+                    Con nosotros encontrarás el equipo ideal y los accesorios más en tendencia para tu equipo.
                     <br /> <br />
                     Puedes encontrarnos en:
                     <Location />
                   </Typography>
-                </Grid>
-                <Grid item sx={{ borderRadius: '50px', width: {xs: '40rem', md: '30rem'}, }}>
-                  {/* <Location /> */}
                 </Grid>
               </Grid> 
             </Grid>
@@ -177,7 +173,6 @@ function Index() {
 
         <WhatsAppButton/>
       </Container>
-      <Footer/>
     </div>
   )
 }
