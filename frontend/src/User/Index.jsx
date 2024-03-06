@@ -3,7 +3,9 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import Chip from '@mui/material/Chip';
 import Container from '@mui/material/Container';
+import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import Instagram from '@mui/icons-material/Instagram';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
@@ -51,7 +53,7 @@ function Index() {
               <Grid item xs={12} sm container >
                 <Grid item xs container direction="column" >
                   <Grid item xs container direction="column" sx={{ justifyContent: {xs: 'center', md: ''} }}>
-                    <Typography variant='h2' gutterBottom  component="div" sx={{display: {xs: 'none', md: 'block'}}}>
+                    <Typography variant='h2' gutterBottom  component="div" sx={{display: {xs: 'none', md: 'block', textShadow: '0px 0px 9px #efb810'}}}>
                       APPLESHOPMTZ
                     </Typography>
                     <Typography variant="h4" gutterBottom >
@@ -72,7 +74,10 @@ function Index() {
           
         <Box id='products' sx={{ width:'100%', pt: '1.6rem', pb: '1.6rem'}}>
           <Typography variant='h2' sx={{pb: '3.2rem', color: '#efb810', textShadow: '0px 0px 9px #efb810'}}>
-            NUESTROS PRODUCTOS
+            <Divider>
+              <Chip label="NUESTROS PRODUCTOS" size='large' sx={{height: '15vh', width: '130vh', fontSize: '3.5rem', backgroundColor: '#000'}}/>
+            </Divider>
+            {/* NUESTROS PRODUCTOS */}
           </Typography>
           <Container spacing={2} >
             <Grid container justifyContent="center" spacing={2} sx={{gap: {xs:3, sm:0, md:0}}}>
@@ -132,7 +137,10 @@ function Index() {
 
         <Box id='about-us' sx={{width:'100%', height: '100%', pt: '1.6rem', pb: '3.6rem', }}>
           <Typography variant='h2' sx={{pt: '1.6rem', pb: '3.2rem', color: '#efb810', textShadow: '0px 0px 9px #efb810'}}>
-            CONOCENOS
+            <Divider>
+              <Chip label="CONOCENOS"  size='large' sx={{height: '15vh', width: '75vh', fontSize: '3.5rem', backgroundColor: '#000'}}/>
+            </Divider>
+            {/* CONOCENOS */}
           </Typography>
 
           <Container sx={{maxHeight: '100rem', }}>

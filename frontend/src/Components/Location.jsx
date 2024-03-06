@@ -1,5 +1,5 @@
 import { Avatar, IconButton } from '@mui/material';
-import ImgLocation from 'C:\\Users\\josemiguel\\Desktop\\images\\Location.png';
+import ImgLocation from 'C:\\Users\\josemiguel\\Desktop\\images\\Location.jpeg';
 
 const Location = () => {
 
@@ -13,7 +13,7 @@ const Location = () => {
       sx={{'&:focus': { outline: 'none', }, }}
       disableRipple 
     >
-      <Avatar src={ImgLocation} alt="Nuestra ubicación" variant='rounded' sx={{height: '100%', width: '100%',}}/>
+      <Avatar src={ImgLocation} alt="Nuestra ubicación" variant='rounded' sx={{height: '80%', width: '80%',}}/>
     </IconButton>    
   );
 }

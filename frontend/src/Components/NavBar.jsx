@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
+import DrawerBag from './DrawerBag';
 import IconButton from '@mui/material/IconButton';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import Login from './Login';
@@ -31,15 +32,12 @@ const ButtonX = styled(Button)(({theme}) =>({
 
 export default function ResponsiveAppBar() {
   
-  const pages = ['Productos', 'Nosotros', 'Login'];
   const { darkMode, toggleDarkMode } = useThemeContext();
+  
+  // Responsive Menu: Event anchorEl
   const [anchorEl, setAnchorEl] = useState(null);
-
-  // Event anchorEl
-  const handleClick = (event) => setAnchorEl(event.currentTarget);
-
-  // Close menu
-  const handleClose = () => setAnchorEl(null);
+  const handleClickMenu = (event) => setAnchorEl(event.currentTarget);
+  const handleCloseMenu = () => setAnchorEl(null);
 
   /* // Navigate
   const navigate = useNavigate();
@@ -53,6 +51,11 @@ export default function ResponsiveAppBar() {
   const [modal, setModal] = useState(false);
   const handleOpenModal = () => setModal(true);
   const handleCloseModal = () => setModal(false);
+
+  // Drawer Bag: Right
+  const [drawer, setDrawer] = useState(false);
+  const handleOpenDrawer = () => setDrawer(true);
+  const handleCloseDrawer = () => setDrawer(false);
 
   return (
     <AppBar enableColorOnDark>
@@ -78,9 +81,9 @@ export default function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, justifyContent: 'end', paddingRight:'3rem', display: { xs: 'none', md: 'flex' } }}>
             <ButtonX key='home' onClick={() => scrollSection("home")} > Inicio </ButtonX>
             <ButtonX key='products' onClick={() => scrollSection("products")} > Productos </ButtonX>
-            <ButtonX key='about-us' onClick={() => scrollSection("about-us")} > Nosotros </ButtonX>
-            <ButtonX key='login' onClick={handleOpenModal} > Login </ButtonX>
-            <IconButtonX onClick={null} sx={{mr: 3}}>
+            <ButtonX key='about-us' onClick={() => scrollSection("about-us")} > Conocenos </ButtonX>
+            <ButtonX key='login' onClick={handleOpenModal} > Ingresar </ButtonX>
+            <IconButtonX onClick={handleOpenDrawer} sx={{mr: 3}}>
               <ShoppingBagIcon/>
             </IconButtonX>
           </Box>
@@ -89,7 +92,7 @@ export default function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButtonX
               size="large"
-              onClick={handleClick}
+              onClick={handleClickMenu}
               color="inherit"
             >
               <MenuIcon/>
@@ -97,15 +100,15 @@ export default function ResponsiveAppBar() {
             <Menu
               anchorEl={anchorEl}
               open={Boolean(anchorEl)}
-              onClose={handleClose}
+              onClose={handleCloseMenu}
               sx={{
                 display: { xs: 'block', md: 'none' },
               }}
             >
               <ButtonX key='home' onClick={() => scrollSection("home")} > Inicio </ButtonX>
               <ButtonX key='products' onClick={() => scrollSection("products")} > Productos </ButtonX>
-              <ButtonX key='about-us' onClick={() => scrollSection("about-us")} > Nosotros </ButtonX>
-              <ButtonX key='login' onClick={handleOpenModal} > Login </ButtonX>
+              <ButtonX key='about-us' onClick={() => scrollSection("about-us")} > Conocenos </ButtonX>
+              <ButtonX key='login' onClick={handleOpenModal} > Ingresar </ButtonX>
             </Menu>
           </Box>
 
@@ -133,6 +136,7 @@ export default function ResponsiveAppBar() {
           </Box>
           
           <Login open={modal} handleClose={handleCloseModal} />
+          <DrawerBag open={drawer} onClose={handleCloseDrawer}/>
         </Toolbar>
       </Container>
     </AppBar>
