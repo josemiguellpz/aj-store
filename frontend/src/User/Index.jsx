@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -33,6 +35,17 @@ const Img = styled('img')({
 
 function Index() {
 
+  const navigate = useNavigate();
+  const [page, setPage] = useState('');
+  const handleGoTo = (path) => setPage(path);
+
+  useEffect(()=>{
+    if (page){
+      navigate(page);
+      setPage('');
+    }
+  }, [page, navigate]);
+
   return (
     <div id='home' style={{paddingTop: '14vh' }}>
       <Container>
@@ -64,7 +77,7 @@ function Index() {
                     </Typography>
                   </Grid>
                   <Grid item >
-                    <Button title={'Catálogo'}onClick={null} variant={"contained"} size={"large"} endIcon={<StyleIcon fontSize='large'/>}/>
+                    <Button title={'Catálogo'} onClick={() => handleGoTo('/products')} variant={"contained"} size={"large"} endIcon={<StyleIcon fontSize='large'/>}/>
                   </Grid>
                 </Grid>
               </Grid>
@@ -93,7 +106,7 @@ function Index() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button title={'Ver más'}onClick={null} variant={"contained"} size={"small"} endIcon={<NavigateNextIcon/>}/>
+                    <Button title={'Ver más'} variant={"contained"} size={"small"} endIcon={<NavigateNextIcon/>}/>
                   </CardActions>
                 </Card>
               </Grid>
@@ -110,7 +123,7 @@ function Index() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button title={'Ver más'}onClick={null} variant={"contained"} size={"small"} endIcon={<NavigateNextIcon/>}/>
+                    <Button title={'Ver más'} variant={"contained"} size={"small"} endIcon={<NavigateNextIcon/>}/>
                   </CardActions>
                 </Card>
               </Grid>
@@ -127,7 +140,7 @@ function Index() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button title={'Ver más'}onClick={null} variant={"contained"} size={"small"} endIcon={<NavigateNextIcon/>}/>
+                    <Button title={'Ver más'} variant={"contained"} size={"small"} endIcon={<NavigateNextIcon/>}/>
                   </CardActions>
                 </Card>
               </Grid>
@@ -144,7 +157,7 @@ function Index() {
           </Typography>
 
           <Container sx={{maxHeight: '100rem', }}>
-            <Grid container xs={12} justifyContent='space-around' sx={{gap: {xs: 4, md: 0}, }}>
+            <Grid item container xs={12} justifyContent='space-around' sx={{gap: {xs: 4, md: 0}, }}>
               <Grid item  >
                 <Card sx={{ maxWidth: 900, height: '110vh' }}  >
                   <CardMedia image={Staff} sx={{ height: 500, width: 500, objectFit: 'contain' }} />
@@ -157,8 +170,8 @@ function Index() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button title={'amaiaguileraa'}onClick={null} variant={"contained"} size={"small"} startIcon={<Instagram/>}/>
-                    <Button title={'jafettudm_'}onClick={null} variant={"contained"} size={"small"} startIcon={<Instagram/>}/>
+                    <Button title={'amaiaguileraa'}  variant={"contained"} size={"small"} startIcon={<Instagram/>}/>
+                    <Button title={'jafettudm_'}  variant={"contained"} size={"small"} startIcon={<Instagram/>}/>
                   </CardActions>
                 </Card>
               </Grid>
@@ -185,4 +198,4 @@ function Index() {
   )
 }
 
-export default Index
+export default Index;

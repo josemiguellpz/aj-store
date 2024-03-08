@@ -1,6 +1,5 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
 import SendIcon from '@mui/icons-material/Send';
@@ -32,7 +31,7 @@ export default function Footer() {
             <Typography variant="h6" color="text.primary" gutterBottom sx={{ textTransform: 'uppercase' }}>
               Compartenos tu opinión
             </Typography>
-            <Button title={"Opiniones"} onClick={null} variant={"contained"} size={"small"} endIcon={<SendIcon/>}/>
+            <Button title={"Opiniones"} variant={"contained"} size={"small"} endIcon={<SendIcon/>}/>
           </Grid>
           
           <Grid item xs={12} sm={4}>

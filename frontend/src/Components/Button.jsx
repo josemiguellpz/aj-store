@@ -47,12 +47,12 @@ Button.defaultProps = {
   variant: "contained",
 };
 
-Button.PropTypes = {
+Button.propTypes = {
   disabled: PropTypes.bool,
-  endIcon: PropTypes.string,
+  endIcon: PropTypes.object,
   onClick: PropTypes.func.isRequired,
   size: PropTypes.string,
-  startIcon: PropTypes.string,
+  startIcon: PropTypes.object,
   sx: PropTypes.object,
   title: PropTypes.string.isRequired,
   variant: PropTypes.string,

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import AppleIcon from '@mui/icons-material/Apple';
 import Box from '@mui/material/Box';
@@ -39,12 +39,22 @@ export default function ResponsiveAppBar() {
   const handleClickMenu = (event) => setAnchorEl(event.currentTarget);
   const handleCloseMenu = () => setAnchorEl(null);
 
-  /* // Navigate
+  // Navigate
+  const [page, setPage] = useState('');
   const navigate = useNavigate();
-  const handlePage = (route) => (event) => navigate(route); */
+  const location = useLocation();
+  /* const handlePage = (route) => (event) => navigate(route); */
   const scrollSection = (id) =>{
-    const section = document.getElementById(id);
-    section.scrollIntoView({behavior: "smooth"});
+    if (location.pathname === '/'){
+      const section = document.getElementById(id);
+      section.scrollIntoView({behavior: "smooth"});
+    }
+    else {
+      if (id === 'home' || id === 'about-us')
+        setPage('/');  
+      if (id === 'products')
+        setPage('/products');
+    }
   }
 
   // Modal
@@ -56,6 +66,13 @@ export default function ResponsiveAppBar() {
   const [drawer, setDrawer] = useState(false);
   const handleOpenDrawer = () => setDrawer(true);
   const handleCloseDrawer = () => setDrawer(false);
+
+  useEffect(()=>{
+    if(page){
+      navigate(page);
+      setPage('');
+    }
+  }, [page, navigate]);
 
   return (
     <AppBar enableColorOnDark>

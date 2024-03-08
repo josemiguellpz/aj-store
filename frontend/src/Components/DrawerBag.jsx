@@ -25,7 +25,7 @@ DrawerBag.defaultProps = {
   onClose: null,
 };
 
-DrawerBag.PropTypes = {
+DrawerBag.propTypes = {
   open: PropTypes.bool,
   onClose: PropTypes.func.isRequired,
 }
