@@ -5,15 +5,13 @@ import AppleIcon from '@mui/icons-material/Apple';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
 import DrawerBag from './DrawerBag';
 import IconButton from '@mui/material/IconButton';
-import LightModeIcon from '@mui/icons-material/LightMode';
 import Login from './Login';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import ShoppingCarIcon from '@mui/icons-material/ShoppingCart';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { useThemeContext } from './ThemeProvider';
@@ -101,7 +99,7 @@ export default function ResponsiveAppBar() {
             <ButtonX key='about-us' onClick={() => scrollSection("about-us")} > Conocenos </ButtonX>
             <ButtonX key='login' onClick={handleOpenModal} > Ingresar </ButtonX>
             <IconButtonX onClick={handleOpenDrawer} sx={{mr: 3}}>
-              <ShoppingBagIcon/>
+              <ShoppingCarIcon/>
             </IconButtonX>
           </Box>
 
@@ -148,7 +146,7 @@ export default function ResponsiveAppBar() {
 
           <Box sx={{display: {xs: 'flex', md: 'none '}}}>
             <IconButtonX onClick={null} >
-              <ShoppingBagIcon/>
+              <ShoppingCarIcon/>
             </IconButtonX>
           </Box>
           

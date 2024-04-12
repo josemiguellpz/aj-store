@@ -1,0 +1,74 @@
+[
+  {
+    "id": 10,
+    "product": "iPhone",
+    "model": "15 Pro Max", 
+    "storage": "256 GB",
+    "price": 25000,
+    "condition": "Nuevo",
+    "colors": ["Azul", "Blanco", "Negro"],
+    "images": [],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna turpis, scelerisque ac nibh eget, egestas rutrum turpis. Fusce at.",
+    "": ""
+  },
+  {
+    "id": 20,
+    "product": "iPhone",
+    "model": "12", 
+    "storage": "128 GB",
+    "price": 25500,
+    "condition": "Seminuevo",
+    "colors": ["Blanco", "Negro"],
+    "images": [],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna turpis, scelerisque ac nibh eget, egestas rutrum turpis. Fusce at.",
+    "": ""
+  },
+  {
+    "id": 30,
+    "product": "iPhone",
+    "model": "13 Pro", 
+    "storage": "512 GB",
+    "price": 32000,
+    "condition": "Nuevo",
+    "colors": ["Dorado", "Plata", "Negro"],
+    "images": [],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna turpis, scelerisque ac nibh eget, egestas rutrum turpis. Fusce at.",
+    "": ""
+  },
+  {
+    "id": 40,
+    "product": "iPhone",
+    "model": "15 Plus", 
+    "storage": "256 GB",
+    "price": 25000,
+    "condition": "Nuevo",
+    "colors": ["Verde", "Rojo", "Blanco"],
+    "images": [],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna turpis, scelerisque ac nibh eget, egestas rutrum turpis. Fusce at.",
+    "": ""
+  },
+  {
+    "id": 50,
+    "product": "iPhone",
+    "model": "11 Pro Max", 
+    "storage": "1 TB",
+    "price": 42000,
+    "condition": "Seminuevo",
+    "colors": ["Negro"],
+    "images": [],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna turpis, scelerisque ac nibh eget, egestas rutrum turpis. Fusce at.",
+    "": ""
+  },
+  {
+    "id": 60,
+    "product": "iPhone",
+    "model": "SE (2020)", 
+    "storage": "128 GB",
+    "price": 11000,
+    "condition": "Seminuevo",
+    "colors": ["Blanco", "Rojo"],
+    "images": [],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna turpis, scelerisque ac nibh eget, egestas rutrum turpis. Fusce at.",
+    "": ""
+  }
+]
