@@ -10,27 +10,34 @@ import IconButton from '@mui/material/IconButton';
 import Login from './Login';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import ShoppingCarIcon from '@mui/icons-material/ShoppingCart';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { useThemeContext } from './ThemeProvider';
 import { styled } from '@mui/system';
 
 /* TODO: Change Button */
 
-// Remove border on click component
+/**
+ * Custom styles for the IconButton and Button component.
+ * Removes the border when the button is clicked.
+ */
 const IconButtonX = styled(IconButton)(({theme}) =>({
-  '&:focus': { outline: 'none', },
+  '&:focus': { 
+    outline: 'none', 
+  },
 }));
+
 const ButtonX = styled(Button)(({theme}) =>({
-  my: 2, color: 'inherit', display: 'block',  marginRight:'3rem',
-  '&:focus': { outline: 'none', },
+  my: 2, 
+  color: 'inherit', 
+  display: 'block',  
+  marginRight:'3rem',
+  '&:focus': { 
+    outline: 'none', 
+  },
 }));
 
 export default function ResponsiveAppBar() {
-  
-  const { darkMode, toggleDarkMode } = useThemeContext();
   
   // Responsive Menu: Event anchorEl
   const [anchorEl, setAnchorEl] = useState(null);
@@ -41,19 +48,6 @@ export default function ResponsiveAppBar() {
   const [page, setPage] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
-  /* const handlePage = (route) => (event) => navigate(route); */
-  const scrollSection = (id) =>{
-    if (location.pathname === '/'){
-      const section = document.getElementById(id);
-      section.scrollIntoView({behavior: "smooth"});
-    }
-    else {
-      if (id === 'home' || id === 'about-us')
-        setPage('/');  
-      if (id === 'products')
-        setPage('/products');
-    }
-  }
 
   // Modal
   const [modal, setModal] = useState(false);
@@ -65,6 +59,10 @@ export default function ResponsiveAppBar() {
   const handleOpenDrawer = () => setDrawer(true);
   const handleCloseDrawer = () => setDrawer(false);
 
+  /**
+   * useEffect to handle navigation when the 'page' state changes.
+   * Navigates to the specified page and resets the 'page' state.
+   */
   useEffect(()=>{
     if(page){
       navigate(page);
@@ -94,9 +92,9 @@ export default function ResponsiveAppBar() {
           
           {/* Desktop : Buttons */}
           <Box sx={{ flexGrow: 1, justifyContent: 'end', paddingRight:'3rem', display: { xs: 'none', md: 'flex' } }}>
-            <ButtonX key='home' onClick={() => scrollSection("home")} > Inicio </ButtonX>
-            <ButtonX key='products' onClick={() => scrollSection("products")} > Productos </ButtonX>
-            <ButtonX key='about-us' onClick={() => scrollSection("about-us")} > Conocenos </ButtonX>
+            <ButtonX key='home' onClick={() => setPage("/")} > Inicio </ButtonX>
+            <ButtonX key='products' onClick={() => setPage("products")} > Productos </ButtonX>
+            <ButtonX key='about-us' onClick={() => setPage("about-us")} > Conocenos </ButtonX>
             <ButtonX key='login' onClick={handleOpenModal} > Ingresar </ButtonX>
             <IconButtonX onClick={handleOpenDrawer} sx={{mr: 3}}>
               <ShoppingCarIcon/>
@@ -120,9 +118,9 @@ export default function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              <ButtonX key='home' onClick={() => scrollSection("home")} > Inicio </ButtonX>
-              <ButtonX key='products' onClick={() => scrollSection("products")} > Productos </ButtonX>
-              <ButtonX key='about-us' onClick={() => scrollSection("about-us")} > Conocenos </ButtonX>
+              <ButtonX key='home' onClick={() => setPage("/")} > Inicio </ButtonX>
+              <ButtonX key='products' onClick={() => setPage("products")} > Productos </ButtonX>
+              <ButtonX key='about-us' onClick={() => setPage("about-us")} > Conocenos </ButtonX>
               <ButtonX key='login' onClick={handleOpenModal} > Ingresar </ButtonX>
             </Menu>
           </Box>
@@ -145,7 +143,7 @@ export default function ResponsiveAppBar() {
           </Typography>
 
           <Box sx={{display: {xs: 'flex', md: 'none '}}}>
-            <IconButtonX onClick={null} >
+            <IconButtonX onClick={handleOpenDrawer} >
               <ShoppingCarIcon/>
             </IconButtonX>
           </Box>

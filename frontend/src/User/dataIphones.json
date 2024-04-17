@@ -8,8 +8,7 @@
     "condition": "Nuevo",
     "colors": ["Azul", "Blanco", "Negro"],
     "images": [],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna turpis, scelerisque ac nibh eget, egestas rutrum turpis. Fusce at.",
-    "": ""
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna turpis, scelerisque ac nibh eget, egestas rutrum turpis. Fusce at."    
   },
   {
     "id": 20,
@@ -20,8 +19,7 @@
     "condition": "Seminuevo",
     "colors": ["Blanco", "Negro"],
     "images": [],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna turpis, scelerisque ac nibh eget, egestas rutrum turpis. Fusce at.",
-    "": ""
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna turpis, scelerisque ac nibh eget, egestas rutrum turpis. Fusce at."
   },
   {
     "id": 30,
@@ -32,8 +30,7 @@
     "condition": "Nuevo",
     "colors": ["Dorado", "Plata", "Negro"],
     "images": [],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna turpis, scelerisque ac nibh eget, egestas rutrum turpis. Fusce at.",
-    "": ""
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna turpis, scelerisque ac nibh eget, egestas rutrum turpis. Fusce at."
   },
   {
     "id": 40,
@@ -44,8 +41,7 @@
     "condition": "Nuevo",
     "colors": ["Verde", "Rojo", "Blanco"],
     "images": [],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna turpis, scelerisque ac nibh eget, egestas rutrum turpis. Fusce at.",
-    "": ""
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna turpis, scelerisque ac nibh eget, egestas rutrum turpis. Fusce at."
   },
   {
     "id": 50,
@@ -56,8 +52,7 @@
     "condition": "Seminuevo",
     "colors": ["Negro"],
     "images": [],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna turpis, scelerisque ac nibh eget, egestas rutrum turpis. Fusce at.",
-    "": ""
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna turpis, scelerisque ac nibh eget, egestas rutrum turpis. Fusce at."
   },
   {
     "id": 60,
@@ -68,7 +63,6 @@
     "condition": "Seminuevo",
     "colors": ["Blanco", "Rojo"],
     "images": [],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna turpis, scelerisque ac nibh eget, egestas rutrum turpis. Fusce at.",
-    "": ""
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna turpis, scelerisque ac nibh eget, egestas rutrum turpis. Fusce at."
   }
 ]

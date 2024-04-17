@@ -41,6 +41,7 @@ import WhatsAppButton from '../Components/WhatsApp';
 import iPhones from 'C:\\Users\\josemiguel\\Desktop\\images\\AppleShopMtz1.webp';
 import iPhone15Pro from 'C:\\Users\\josemiguel\\Desktop\\images\\iPhones\\iphone-15.jpg';
 import { styled } from '@mui/material/styles';
+import dataIphones from './dataIphones.json';
 
 /* Max and Min Price Component Slider */
 const MINPRICE = 0
@@ -60,7 +61,7 @@ const MenuProps = {
 
 /* Array Iphone Models */
 
-const dataIphones = [
+const dataIphonesk = [
   {
     value: 10,
     model: 'iPhone X'
@@ -119,7 +120,10 @@ function Products(params) {
   const [casesDataForSearch, setCasesDataForSearch] = useState({caseModel: '', casePrice: ''});
   const handleCasesDataForSearch = (e) => setCasesDataForSearch({...casesDataForSearch, [e.target.name]: e.target.value});
 
-  /* Submit */
+  /**
+   * Handles the form submission for searching iPhones.
+   * Prevents the default form submission and logs the search data.
+   */
   const handleSearchIphones = (event) => {
     event.preventDefault();
     console.log(iphoneDataForSearch);
@@ -131,9 +135,192 @@ function Products(params) {
   }
 
   return (
-    <div style={{paddingTop: '14vh', paddingBottom: '14vh' }}>
+    <Grid style={{paddingTop: '14vh', paddingBottom: '14vh' }}>
       <Grid container spacing={2} >
-        <Grid item xs={3}>
+        
+        {/* Responsive Design */}
+        <Grid item xs={12} md={3} lg={2.5} justifyContent={'center'} sx={{display : {xs: 'flex', md: 'none', lg: 'none'}}}>
+          <Paper sx={{ width: '80vh', padding: 2 }}>
+            <Typography variant="h6" gutterBottom>
+              Búsqueda rápida
+            </Typography>
+            <ButtonGroup size="small" color="warning">
+              <Btn onClick={() => setFormToShow('all')}>Todo</Btn>
+              <Btn onClick={() => setFormToShow('iphones')}>iPhones</Btn>
+              <Btn onClick={() => setFormToShow('cases')}>Cases</Btn>
+              <Btn onClick={() => setFormToShow('accesories')}>Accesorios</Btn>
+            </ButtonGroup>
+            <Divider sx={{pb: 1, pt: 1}} />
+            <List>
+
+                { formToShow === 'all' ? (
+                  <> </>
+                ) : formToShow === 'iphones' ? (
+                  <form onSubmit={handleSearchIphones}>
+                    <Grid container justifyContent={'center'} sx={{/* border:'solid red' */}}>
+                      <Grid item xs={6} sx={{pb:1, pt: 1,/*  boder: 'solid yellow' */}}>
+                        <FormControl sx={{ minWidth: 200, pt: 1}}>
+                          <InputLabel color='warning'>Modelo</InputLabel>
+                          <Select
+                            name='model'
+                            label="Modelo"
+                            value={iphoneDataForSearch.model}
+                            onChange={handleIphoneDataForSearch}
+                            MenuProps={MenuProps}
+                            size='small'
+                            color='warning'
+                          >
+                            {dataIphonesk.map(({ value, model }) => (
+                              <MenuItem key={value} value={value}> 
+                                {model} 
+                              </MenuItem>
+                            ))}
+                          </Select>
+                        </FormControl>
+                      </Grid>
+                      <Grid item xs={6} sx={{/* border:'solid yellow', */ pb:1, pt: 1}}>
+                        <FormControl sx={{ minWidth: 200, pt: 1 }}>
+                          <InputLabel color='warning'>Almacenamiento</InputLabel>
+                          <Select
+                            name='storage'
+                            label="Almacenamiento"
+                            value={iphoneDataForSearch.storage}
+                            onChange={handleIphoneDataForSearch}
+                            size='small'
+                            color='warning'
+                          >
+                            <MenuItem value="" sx={{width: 200}}>
+                              <em>None</em>
+                            </MenuItem>
+                            <MenuItem value={10}>128 GB</MenuItem>
+                            <MenuItem value={20}>256 GB</MenuItem>
+                            <MenuItem value={30}>512 GB</MenuItem>
+                            <MenuItem value={40}>1 TB</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </Grid>
+                      <Grid xs={12} sx={{/* border: 'solid green' */}}>
+                        <ListItem sx={{justifyContent: 'center'}}>
+                          <Box sx={{ width: 300 }}>
+                            <ListItemText primary="Rango de Precio" />
+                            <Slider
+                              step={500}
+                              value={price}
+                              valueLabelDisplay="auto"
+                              min={MINPRICE}
+                              max={MAXPRICE}
+                              onChange={handleChangePrice}
+                              color='warning'
+                            />
+                            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                              <Typography variant="body2" onClick={() => setPrice(MINPRICE)} sx={{ cursor: 'pointer' }}>
+                                ${MINPRICE.toLocaleString()}
+                              </Typography>
+                              <Typography variant="body2" onClick={() => setPrice(MAXPRICE)} sx={{ cursor: 'pointer' }}>
+                                ${MAXPRICE.toLocaleString()}
+                              </Typography>
+                            </Box>
+                          </Box>
+                        </ListItem>
+                      </Grid>
+                      
+                      <Grid container sx={{/* border: 'solid blue' */}}>
+                        <Grid item xs={6}>
+                        <Divider sx={{pb: 1, pt: 1}} />
+                          <ListItem>
+                            <ListItemButton onClick={handleSearchIphones}>
+                              <ListItemIcon sx={{alignItems: 'center'}}>
+                                <SearchIcon fontSize='small'/>
+                                <ListItemText primary="Buscar" sx={{ pl: 2}} />
+                              </ListItemIcon>
+                            </ListItemButton>
+                          </ListItem>
+                        </Grid>
+                        <Grid item xs={6}>
+                        <Divider sx={{pb: 1, pt: 1}} />
+                          <ListItem>
+                            <ListItemButton onClick={() => { /* Lógica para filtrar */ }}>
+                              <ListItemIcon sx={{alignItems: 'center'}}>
+                                <UndoIcon fontSize='small'/>
+                                <ListItemText primary="Descartar" sx={{ pl: 2}}/>
+                              </ListItemIcon>
+                            </ListItemButton>
+                          </ListItem>
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                  </form>
+                ) : formToShow === 'cases' ? (
+                  <form onSubmit={handleSearchCases}>
+                    <Grid container justifyContent={'center'} sx={{pt:1}}>
+                      <FormControl sx={{ minWidth: 200, pt: 1 }}>
+                        <InputLabel color='warning'>Modelo de Case</InputLabel>
+                        <Select
+                          name='caseModel'
+                          label="Modelo de Case"
+                          value={casesDataForSearch.caseModel}
+                          onChange={handleCasesDataForSearch}
+                          size='small'
+                          color='warning'
+                        >
+                          <MenuItem value="" sx={{width: 200}}>
+                            <em>None</em>
+                          </MenuItem>
+                          <MenuItem value={10}>iPhone 11</MenuItem>
+                          <MenuItem value={20}>iPhone 12 Pro</MenuItem>
+                          <MenuItem value={30}>iPhone 14 Plus</MenuItem>
+                          <MenuItem value={40}>iPhone 15 Pro Max</MenuItem>
+                        </Select>
+                      </FormControl>
+                      <ListItem>
+                        <ListItemButton onClick={handleSearchCases}>
+                          <ListItemIcon>
+                            <SearchIcon fontSize='small'/>
+                          </ListItemIcon>
+                          <ListItemText primary="Buscar" />
+                        </ListItemButton>
+                      </ListItem>
+                    </Grid>
+                  </form>
+                ) : (
+                  <form>
+                    <Grid container justifyContent={'center'} sx={{pt:1}}>
+                      <FormControl sx={{ minWidth: 200, pt: 1}}>
+                        <InputLabel>Accesorio</InputLabel>
+                        <Select
+                          name='accesories'
+                          label="Accesorio"
+                          /* value={dataFilter.model} */
+                          /* onChange={handleDataFilter} */
+                          size='small'
+                          color='warning'
+                        >
+                          <MenuItem value="" sx={{width: 200}}>
+                            <em>None</em>
+                          </MenuItem>
+                          <MenuItem value={10}>MagSafe</MenuItem>
+                          <MenuItem value={20}>Adaptador de Corriente</MenuItem>
+                          <MenuItem value={30}>Cables</MenuItem>
+                        </Select>
+                      </FormControl>
+                      <ListItem>
+                        <ListItemButton /* onClick={handleSearchIphones} */>
+                          <ListItemIcon>
+                            <SearchIcon fontSize='small'/>
+                          </ListItemIcon>
+                          <ListItemText primary="Buscar" />
+                        </ListItemButton>
+                      </ListItem>
+                    </Grid>
+                  </form>
+                )}
+
+            </List>
+          </Paper>
+        </Grid>
+
+        {/* Desktop Design */}
+        <Grid item xs={12} md={3} lg={2.5} sx={{display : {xs: 'none', md: 'block', lg: 'block'}}}>
           <Paper sx={{ position: 'sticky', top: 0, left: 0, bottom: 0, width: '35vh', padding: 2 }}>
             <Typography variant="h6" gutterBottom>
               Búsqueda rápida
@@ -151,7 +338,7 @@ function Products(params) {
                   <> </>
                 ) : formToShow === 'iphones' ? (
                   <form onSubmit={handleSearchIphones}>
-                    <FormControl sx={{ minWidth: 200, mt: 5, mb: 2 }}>
+                    <FormControl sx={{ minWidth: 200, mt: 3, mb: 2, pt: 1 }}>
                       <InputLabel color='warning'>Modelo</InputLabel>
                       <Select
                         name='model'
@@ -162,14 +349,14 @@ function Products(params) {
                         size='small'
                         color='warning'
                       >
-                        {dataIphones.map(({ value, model }) => (
+                        {dataIphonesk.map(({ value, model }) => (
                           <MenuItem key={value} value={value}> 
                             {model} 
                           </MenuItem>
                         ))}
                       </Select>
                     </FormControl>
-                    <FormControl sx={{ m: 1, minWidth: 200, mb: 2 }}>
+                    <FormControl sx={{ minWidth: 200, m: 1, mb: 2, pt: 1 }}>
                       <InputLabel color='warning'>Almacenamiento</InputLabel>
                       <Select
                         name='storage'
@@ -232,7 +419,7 @@ function Products(params) {
                   </form>
                 ) : formToShow === 'cases' ? (
                   <form onSubmit={handleSearchCases}>
-                    <FormControl sx={{ minWidth: 200, mt: 5, mb: 2 }}>
+                    <FormControl sx={{ minWidth: 200, mt: 3, mb: 2, pt: 1 }}>
                       <InputLabel color='warning'>Modelo de Case</InputLabel>
                       <Select
                         name='caseModel'
@@ -295,83 +482,38 @@ function Products(params) {
           </Paper>
         </Grid>
 
-        <Grid item xs={8} style={{ overflowY: 'auto', display: 'flex', flexWrap: 'wrap'}}>
-          <Card sx={{ width: 250, marginRight: 5, marginBottom: 5 }}>
-            <CardMedia image={iPhone15Pro} sx={{ height: 200, objectFit: 'cover' }} />
-            <CardContent>
-              <Typography gutterBottom variant="h6" component="div">
-                iPhone 15 Pro Max
-              </Typography>
-              <Grid container justifyContent='space-around'>
-                <Chip size='small' label='$25,000'/>
-                <Chip size='small' label='256 GB'/>
-                <Chip size='small' label='Seminuevo'/>
-              </Grid>
-            </CardContent>
-            <CardActions sx={{ marginBottom: 1}}>
-              <Grid container justifyContent='space-around'>
-                <ChipButton label={'Mostrar'} onClick={()=>{}} icon={<MoreVertIcon/>} />
-                <ChipButton label={'Añadir'} onClick={()=>{}} icon={<AddShoppingCartIcon/>} />
-              </Grid>
-            </CardActions>
-          </Card>
-          <Card sx={{ width: 250, marginRight: 5, marginBottom: 5 }}>
-            <CardMedia image={iPhones} sx={{ height: 200, objectFit: 'cover' }} />
-            <CardContent>
-              <Typography gutterBottom variant="h6" component="div">
-                iPhone 12
-              </Typography>
-              <Grid container justifyContent='space-around'>
-                <Chip size='small' label='$35,000'/>
-                <Chip size='small' label='1 TB'/>
-                <Chip size='small' label='Nuevo'/>
-              </Grid>
-            </CardContent>
-            <CardActions>
-              <Grid container justifyContent='space-around'>
-                <ChipButton label={'Mostrar'} onClick={()=>{}} icon={<MoreVertIcon/>} />
-                <ChipButton label={'Añadir'} onClick={()=>{}} icon={<AddShoppingCartIcon/>} />
-              </Grid>
-            </CardActions>
-          </Card>
-          <Card sx={{ width: 250, marginRight: 5, marginBottom: 5 }}>
-            <CardMedia image={iPhones} sx={{ height: 200, objectFit: 'cover' }} />
-            <CardContent>
-              <Typography gutterBottom variant="h6" component="div">
-                iPhone 13 Pro
-              </Typography>
-              <Grid container justifyContent='space-around'>
-                <Chip size='small' label='$20,000'/>
-                <Chip size='small' label='128 GB'/>
-                <Chip size='small' label='Nuevo'/>
-              </Grid>
-            </CardContent>
-            <CardActions>
-              <Grid container justifyContent='space-around'>
-                <ChipButton label={'Mostrar'} onClick={()=>{}} icon={<MoreVertIcon/>} />
-                <ChipButton label={'Añadir'} onClick={()=>{}} icon={<AddShoppingCartIcon/>} />
-              </Grid>
-            </CardActions>
-          </Card>
-          <Card sx={{ width: 250, marginRight: 5, marginBottom: 5 }}>
-            <CardMedia image={iPhones} sx={{ height: 200, objectFit: 'cover' }} />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                MagSafe
-              </Typography>
-              <Chip label='$5,000'/>
-            </CardContent>
-            <CardActions>
-              <Grid container justifyContent='space-around'>
-                <ChipButton label={'Mostrar'} onClick={()=>{}} icon={<MoreVertIcon/>} />
-                <ChipButton label={'Añadir'} onClick={()=>{}} icon={<AddShoppingCartIcon/>} />
-              </Grid>
-            </CardActions>
-          </Card>
+        <Grid item xs={12} md={9} lg={9.5} style={{width: "100", overflowY: 'auto', display: 'flex', flexWrap: 'wrap', /* border:'solid blue', */}}>
+          {
+            dataIphones.map(({id, product, model, storage, price, condition}) => {
+              return (
+                <Grid key={id} container justifyContent={'center'} xs={6} md={6} lg={4} sx={{/* border: 'solid yellow' */}}>
+                  <Card sx={{ width: 270, height: 350, marginBottom: 3 }}>
+                    <CardMedia image={iPhone15Pro} sx={{ height: 200, objectFit: 'cover'}} />
+                    <CardContent>
+                      <Typography gutterBottom variant="h6" component="div">
+                        {product} {model}
+                      </Typography>
+                      <Grid container justifyContent='space-around'>
+                        <Chip size='small' label={`${price.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })}`}/>
+                        <Chip size='small' label={`${storage}`}/>
+                        <Chip size='small' label={`${condition}`}/>
+                      </Grid>
+                    </CardContent>
+                    <CardActions sx={{ marginBottom: 1}}>
+                      <Grid container justifyContent='space-around'>
+                        <ChipButton label={'Mostrar'} onClick={()=>{}} icon={<MoreVertIcon/>} />
+                        <ChipButton label={'Añadir'} onClick={()=>{}} icon={<AddShoppingCartIcon/>} />
+                      </Grid>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              );
+            })
+          }
         </Grid>
       </Grid>
       <WhatsAppButton/>
-    </div>
+    </Grid>
   );  
 }
 
