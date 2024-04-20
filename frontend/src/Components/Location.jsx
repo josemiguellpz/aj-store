@@ -13,7 +13,7 @@ const Location = () => {
       sx={{'&:focus': { outline: 'none', }, }}
       disableRipple 
     >
-      <Avatar src={ImgLocation} alt="Nuestra ubicación" variant='rounded' sx={{height: '80%', width: '80%',}}/>
+      <Avatar src={ImgLocation} alt="Nuestra ubicación" variant='rounded' sx={{height: '50%', width: '70%',}}/>
     </IconButton>    
   );
 }

@@ -145,7 +145,7 @@ function Products(params) {
               Búsqueda rápida
             </Typography>
             <ButtonGroup size="small" color="warning">
-              <Btn onClick={() => setFormToShow('all')}>Todo</Btn>
+              <Btn onClick={() => setFormToShow('all')}>Ver Todo</Btn>
               <Btn onClick={() => setFormToShow('iphones')}>iPhones</Btn>
               <Btn onClick={() => setFormToShow('cases')}>Cases</Btn>
               <Btn onClick={() => setFormToShow('accesories')}>Accesorios</Btn>
@@ -328,7 +328,7 @@ function Products(params) {
             <Divider />
             <List>
               <ButtonGroup orientation="vertical" size="small" color="warning">
-                <Btn onClick={() => setFormToShow('all')}>Todo</Btn>
+                <Btn onClick={() => setFormToShow('all')}>Ver Todo</Btn>
                 <Btn onClick={() => setFormToShow('iphones')}>iPhones</Btn>
                 <Btn onClick={() => setFormToShow('cases')}>Cases</Btn>
                 <Btn onClick={() => setFormToShow('accesories')}>Accesorios</Btn>
@@ -487,8 +487,8 @@ function Products(params) {
             dataIphones.map(({id, product, model, storage, price, condition}) => {
               return (
                 <Grid key={id} container justifyContent={'center'} xs={6} md={6} lg={4} sx={{/* border: 'solid yellow' */}}>
-                  <Card sx={{ width: 270, height: 350, marginBottom: 3 }}>
-                    <CardMedia image={iPhone15Pro} sx={{ height: 200, objectFit: 'cover'}} />
+                  <Card sx={{ width: 270, height: 500, marginBottom: 3 }}>
+                    <CardMedia image={iPhone15Pro} sx={{ height: 350, objectFit: 'cover'}} />
                     <CardContent>
                       <Typography gutterBottom variant="h6" component="div">
                         {product} {model}

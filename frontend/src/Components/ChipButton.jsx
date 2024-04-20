@@ -5,9 +5,10 @@ const ChipButton = ({
   size,
   icon,
   label,
+  sx,
 }) => {
   return (
-    <Chip size={size} icon={icon} label={label} onClick={onClick} sx={{}}/>
+    <Chip size={size} icon={icon} label={label} onClick={onClick} sx={sx}/>
   );
 }
 

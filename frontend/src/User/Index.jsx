@@ -10,20 +10,21 @@ import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import Instagram from '@mui/icons-material/Instagram';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import Paper from '@mui/material/Paper';
 import StyleIcon from '@mui/icons-material/Style';
 import Typography from '@mui/material/Typography';
 import Button from '../Components/Button';
-import NavBar from '../Components/NavBar';
-import Footer from '../Components/Footer';
 import WhatsAppButton from '../Components/WhatsApp';
 import logo from 'C:\\Users\\josemiguel\\Desktop\\images\\logo.jpg';
+import ImgLocation from 'C:\\Users\\josemiguel\\Desktop\\images\\Location.jpeg';
 import iPhones from 'C:\\Users\\josemiguel\\Desktop\\images\\AppleShopMtz1.webp';
 import Cases from 'C:\\Users\\josemiguel\\Desktop\\images\\Cases-Airpods.webp';
 import Accesories from 'C:\\Users\\josemiguel\\Desktop\\images\\Accesories.webp';
 import Staff from 'C:\\Users\\josemiguel\\Desktop\\images\\Staff.jpeg';
 import Location from '../Components/Location';
+import ChipButton from '../Components/ChipButton';
 import { styled } from '@mui/material/styles';
 
 const Img = styled('img')({
@@ -32,6 +33,15 @@ const Img = styled('img')({
   maxWidth: '100%',
   maxHeight: '100%',
 });
+
+const styleChipButton = {
+  '&:hover': {
+    background: '#efb810',
+    color: '#000',
+    fontWeight: 'bold'
+  }
+}
+
 
 function Index() {
 
@@ -86,16 +96,14 @@ function Index() {
         </Box>
           
         <Box id='products' sx={{ width:'100%', pt: '1.6rem', pb: '1.6rem'}}>
-          <Typography variant='h2' sx={{pb: '3.2rem', color: '#efb810', textShadow: '0px 0px 9px #efb810'}}>
-            <Divider>
-              <Chip label="NUESTROS PRODUCTOS" size='large' sx={{height: '15vh', width: '130vh', fontSize: '3.5rem', backgroundColor: '#000'}}/>
-            </Divider>
-            {/* NUESTROS PRODUCTOS */}
-          </Typography>
-          <Container spacing={2} >
-            <Grid container justifyContent="center" spacing={2} sx={{gap: {xs:3, sm:0, md:0}}}>
-              <Grid item xs={8} sm={6} md={4}>
-                <Card sx={{ maxWidth: 350 }}>
+          <Paper elevation={4} sx={{ pb:6 }}>
+            <Grid container justifyContent={'center'} sx={{/* border: 'solid yellow' */}}>
+              <Grid item xs={12} sx={{pt:5, pb: 5}}>
+                <Typography variant='h2' sx={{textShadow: '0px 0px 9px #efb810'}}>COLECCIÓN</Typography>
+                <Divider sx={{pt: 2}}/>
+              </Grid>
+              <Grid item xs={12} sm={6} md={4} lg={4} sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <Card sx={{ maxWidth: 350, background: '#000' }}>
                   <CardMedia image={iPhones} sx={{ height: 200, objectFit: 'cover' }} />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
@@ -110,9 +118,8 @@ function Index() {
                   </CardActions>
                 </Card>
               </Grid>
-
-              <Grid item xs={8} sm={6} md={4}>
-                <Card sx={{ maxWidth: 350 }}>
+              <Grid item xs={12} sm={6} md={4} lg={4} sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', mt: {xs: 5, md: 0, lg: 0}, mb: {xs: 5, md: 0, lg: 0}}}>
+                <Card sx={{ maxWidth: 350, background: '#000' }}>
                   <CardMedia image={Cases} sx={{ height: 200, objectFit: 'cover' }} />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
@@ -127,9 +134,8 @@ function Index() {
                   </CardActions>
                 </Card>
               </Grid>
-
-              <Grid item xs={8} sm={6} md={4}>
-                <Card sx={{ maxWidth: 350 }}>
+              <Grid item xs={12} sm={12} md={4} lg={4} sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <Card sx={{ maxWidth: 350, background: '#000' }}>
                   <CardMedia image={Accesories} sx={{ height: 200, objectFit: 'cover' }} />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
@@ -145,21 +151,18 @@ function Index() {
                 </Card>
               </Grid>
             </Grid>
-          </Container>
+          </Paper>
         </Box>
 
         <Box id='about-us' sx={{width:'100%', height: '100%', pt: '1.6rem', pb: '3.6rem', }}>
-          <Typography variant='h2' sx={{pt: '1.6rem', pb: '3.2rem', color: '#efb810', textShadow: '0px 0px 9px #efb810'}}>
-            <Divider>
-              <Chip label="CONOCENOS"  size='large' sx={{height: '15vh', width: '75vh', fontSize: '3.5rem', backgroundColor: '#000'}}/>
-            </Divider>
-            {/* CONOCENOS */}
-          </Typography>
-
-          <Container sx={{maxHeight: '100rem', }}>
-            <Grid item container xs={12} justifyContent='space-around' sx={{gap: {xs: 4, md: 0}, }}>
-              <Grid item  >
-                <Card sx={{ maxWidth: 900, height: '110vh' }}  >
+          <Paper elevation={4} sx={{pb: 6}}>
+            <Grid container justifyContent={'space-around'}>
+              <Grid item xs={12} sx={{pt:5, pb: 5}}>
+                <Typography variant='h2' sx={{textShadow: '0px 0px 9px #efb810'}}>CONOCENOS</Typography>
+                <Divider sx={{pt: 2}}/>
+              </Grid>
+              <Grid item xs={8} md={5} lg={5}>
+                <Card sx={{ maxWidth: 900, background: '#000', pb: 2 }}  >
                   <CardMedia image={Staff} sx={{ height: 500, width: 500, objectFit: 'contain' }} />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
@@ -175,21 +178,27 @@ function Index() {
                   </CardActions>
                 </Card>
               </Grid>
-              
-              <Grid item container justifyContent="center" alignItems="center"  sx={{ maxWidth: {xs: '40rem', md: '30rem'},  gap: {xs: 4, md: 0}, }}>
-                <Grid item sx={{ background: '#000', borderRadius: '10px', }}>
-                  <Typography variant='h6'  sx={{ padding: '2rem', }}>
-                    En AppleShopMtz estamos comprometidos con ofrecer la mejor atención y calidad en nuestros productos. 
-                    Con nosotros encontrarás el equipo ideal y los accesorios más en tendencia para tu equipo.
-                    <br /> <br />
-                    Puedes encontrarnos en:
-                    <Location />
-                  </Typography>
-                </Grid>
-              </Grid> 
+              <Grid item xs={9} md={6} lg={6} sx={{mt: {xs: 5, md: 0, lg: 0}}}>
+                <Card sx={{  background: '#000', pb: 2 }}  >
+                  <CardContent>
+                    <Typography color='text.primary' >
+                      En AppleShopMtz estamos comprometidos con ofrecer la mejor atención y calidad en nuestros productos. 
+                      Con nosotros encontrarás el equipo ideal y los accesorios más en tendencia para tu equipo.
+                    </Typography>
+                    <Typography color='text.secondary' >
+                      Puedes encontrarnos en:  
+                    </Typography>
+                  </CardContent>
+                  <CardMedia image={ImgLocation} sx={{ height: 300, objectFit: 'contain' }} />
+                  <CardActions>
+                    <ChipButton label={'Ubicación'} onClick={() => {}} icon={<LocationOnIcon/>}/>
+                    <ChipButton label={'Ubicación'} onClick={() => {}} icon={<LocationOnIcon/>} sx={styleChipButton}/>
+                    <Button title={'Ir'}  variant={"contained"} size={"small"} startIcon={<Instagram/>}/>
+                  </CardActions>
+                </Card>
+              </Grid>
             </Grid>
-          </Container>
-
+          </Paper>          
         </Box>
 
         <WhatsAppButton/>

@@ -1,0 +1,108 @@
+<Box id='products' sx={{ width:'100%', pt: '1.6rem', pb: '1.6rem'}}>
+  <Typography variant='h2' sx={{pb: '3.2rem', color: '#efb810', textShadow: '0px 0px 9px #efb810'}}>
+    <Divider>
+      {/* <Chip label="NUESTROS PRODUCTOS" size='large' sx={{height: '15vh', width: '130vh', fontSize: '3.5rem', backgroundColor: '#000'}}/> */}
+      <Chip label="COLECCIÓN" size='large' sx={{height: '15vh', width: '70vh', fontSize: '3.5rem', backgroundColor: '#000'}}/>
+    </Divider>
+  </Typography>
+  <Container spacing={2} >
+    <Grid container justifyContent="center" spacing={2} sx={{gap: {xs:3, sm:0, md:0}}}>
+      <Grid item xs={8} sm={6} md={4}>
+        <Card sx={{ maxWidth: 350 }}>
+          <CardMedia image={iPhones} sx={{ height: 200, objectFit: 'cover' }} />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              iPhones
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Consulta cualquier modelo de tu preferencia.
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button title={'Ver más'} variant={"contained"} size={"small"} endIcon={<NavigateNextIcon/>}/>
+          </CardActions>
+        </Card>
+      </Grid>
+
+      <Grid item xs={8} sm={6} md={4}>
+        <Card sx={{ maxWidth: 350 }}>
+          <CardMedia image={Cases} sx={{ height: 200, objectFit: 'cover' }} />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              Cases
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Protege tu iPhone del agua, polvo y golpes.
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button title={'Ver más'} variant={"contained"} size={"small"} endIcon={<NavigateNextIcon/>}/>
+          </CardActions>
+        </Card>
+      </Grid>
+
+      <Grid item xs={8} sm={6} md={4}>
+        <Card sx={{ maxWidth: 350 }}>
+          <CardMedia image={Accesories} sx={{ height: 200, objectFit: 'cover' }} />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              Accesorios
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              MagSafe, Cargadores, Airpods, entre otros.
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button title={'Ver más'} variant={"contained"} size={"small"} endIcon={<NavigateNextIcon/>}/>
+          </CardActions>
+        </Card>
+      </Grid>
+    </Grid>
+  </Container>
+</Box>
+
+
+
+<Box id='about-us' sx={{width:'100%', height: '100%', pt: '1.6rem', pb: '3.6rem', }}>
+  <Typography variant='h2' sx={{pt: '1.6rem', pb: '3.2rem', color: '#efb810', textShadow: '0px 0px 9px #efb810'}}>
+    <Divider>
+      <Chip label="CONOCENOS"  size='large' sx={{height: '15vh', width: '75vh', fontSize: '3.5rem', backgroundColor: '#000'}}/>
+    </Divider>
+    {/* CONOCENOS */}
+  </Typography>
+
+  <Container sx={{maxHeight: '100rem', }}>
+    <Grid item container xs={12} justifyContent='space-around' sx={{gap: {xs: 4, md: 0}, }}>
+      <Grid item  >
+        <Card sx={{ maxWidth: 900, height: '110vh' }}  >
+          <CardMedia image={Staff} sx={{ height: 500, width: 500, objectFit: 'contain' }} />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              Amai Aguilera & Jafet Uriostigue
+            </Typography>
+            <Typography color='text.secondary' >
+              Emprendedores e ingenieros
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button title={'amaiaguileraa'}  variant={"contained"} size={"small"} startIcon={<Instagram/>}/>
+            <Button title={'jafettudm_'}  variant={"contained"} size={"small"} startIcon={<Instagram/>}/>
+          </CardActions>
+        </Card>
+      </Grid>
+      
+      <Grid item container justifyContent="center" alignItems="center"  sx={{ maxWidth: {xs: '40rem', md: '30rem'},  gap: {xs: 4, md: 0}, }}>
+        <Grid item sx={{ background: '#000', borderRadius: '10px', }}>
+          <Typography variant='h6'  sx={{ padding: '2rem', }}>
+            En AppleShopMtz estamos comprometidos con ofrecer la mejor atención y calidad en nuestros productos. 
+            Con nosotros encontrarás el equipo ideal y los accesorios más en tendencia para tu equipo.
+            <br /> <br />
+            Puedes encontrarnos en:
+            <Location />
+          </Typography>
+        </Grid>
+      </Grid> 
+    </Grid>
+  </Container>
+
+</Box>
