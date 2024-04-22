@@ -5,7 +5,6 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Chip from '@mui/material/Chip';
 import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
@@ -27,11 +26,12 @@ import Location from '../Components/Location';
 import ChipButton from '../Components/ChipButton';
 import { styled } from '@mui/material/styles';
 
+
 const Img = styled('img')({
   margin: 'auto',
   display: 'block',
   maxWidth: '100%',
-  maxHeight: '100%',
+  maxHeight: '100%', width: 300, height: 300, border:'solid #efb810', borderRadius: '50%', overflow: 'hidden',
 });
 
 const styleChipButton = {
@@ -42,12 +42,14 @@ const styleChipButton = {
   }
 }
 
+const url = 'https://www.google.com.mx/maps/place/C.+Adolfo+L%C3%B3pez+Mateos+478,+Ejidal,+93606+Mart%C3%ADnez+de+la+Torre,+Ver./@20.068934,-97.0465094,19.76z/data=!4m6!3m5!1s0x85db03b5baa02311:0x36e0f199cf45d1cf!8m2!3d20.0691015!4d-97.0464685!16s%2Fg%2F11mtdkhwmd?entry=ttu';
 
 function Index() {
 
   const navigate = useNavigate();
   const [page, setPage] = useState('');
   const handleGoTo = (path) => setPage(path);
+  const handleShowLocation = () => window.open(url, '_blank'); 
 
   useEffect(()=>{
     if (page){
@@ -64,31 +66,57 @@ function Index() {
           {/* sx={{ border:'solid yellow',}} */}
           {/* sx={{ border:'solid green', }} */}
           {/* TODO: Change Images, Move to Page section */}
-        <Box  sx={{ width:'100%', pt: '1.6rem', pb: '1.6rem' }}>
-          <Paper elevation={3} sx={{p: 2, maxWidth: '100%', flexGrow: 1, pt: '2.5rem', pb: '2.5rem',}}>
-            <Grid container sx={{ gap: {xs: 1, md: 0} }} padding='2.5rem'>
-              <Grid item >
-                <Box sx={{ width: 300, height: 300, border:'solid #efb810', borderRadius: '50%', overflow: 'hidden', }}>
-                  <Img alt="complex" src={logo}  />
-                </Box>
+
+        {/* Responsive Design */}
+        <Box sx={{ width:'100%', pt: '1.6rem', pb: '1.6rem', display: {xs: 'block', md: 'none', lg: 'none'}}}>
+          <Paper elevation={3} sx={{p: 2, maxWidth: '100%', flexGrow: 1,}}>
+            <Grid container justifyContent={'center'} padding='2.5rem'>
+              <Grid item sm={12}>
+                <Typography variant='h2' gutterBottom  component="div" sx={{textShadow: '0px 0px 9px #efb810'}}>
+                  APPLESHOPMTZ
+                </Typography>
               </Grid>
-              
-              <Grid item xs={12} sm container >
-                <Grid item xs container direction="column" >
-                  <Grid item xs container direction="column" sx={{ justifyContent: {xs: 'center', md: ''} }}>
-                    <Typography variant='h2' gutterBottom  component="div" sx={{display: {xs: 'none', md: 'block', textShadow: '0px 0px 9px #efb810'}}}>
-                      APPLESHOPMTZ
-                    </Typography>
-                    <Typography variant="h4" gutterBottom >
-                      Productos originales
-                    </Typography>
-                    <Typography variant="h4" color="text.secondary" >
-                      Conoce nuestra amplia gama de productos
-                    </Typography>
-                  </Grid>
-                  <Grid item >
-                    <Button title={'Catálogo'} onClick={() => handleGoTo('/products')} variant={"contained"} size={"large"} endIcon={<StyleIcon fontSize='large'/>}/>
-                  </Grid>
+              <Grid item sm={5}>
+                <Img alt="logo" src={logo}/>
+              </Grid>
+              <Grid item sm={7} sx={{ alignContent: 'center',}}>
+                <Grid item sm={12}>
+                  <Typography variant="h4" gutterBottom >
+                    Productos originales
+                  </Typography>
+                  <Typography variant="h4" color="text.secondary" >
+                    Conoce nuestra amplia gama de productos
+                  </Typography>
+                </Grid>
+                <Grid item sm={12} sx={{ pt:5, }}>
+                  <Button title={'Catálogo'} onClick={() => handleGoTo('/products')} variant={"contained"} size={"large"} endIcon={<StyleIcon fontSize='large'/>}/>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Paper>
+        </Box>
+
+        {/* Desktop Design */}
+        <Box sx={{ width:'100%', pt: '1.6rem', pb: '1.6rem', display: {xs: 'none', md: 'block', lg: 'block'}}}>
+          <Paper elevation={3} sx={{p: 2, maxWidth: '100%', flexGrow: 1, pt: '1.5rem', pb: '1.5rem',}}>
+            <Grid container justifyContent={'center'} padding='2.5rem'>
+              <Grid item xs={3} md={4.5} lg={4.5}>
+                <Img alt="logo" src={logo}/>
+              </Grid>
+              <Grid item xs={6} md={7.5} lg={7.5}>
+                <Grid item lg={12}>
+                  <Typography variant='h2' gutterBottom  component="div" sx={{textShadow: '0px 0px 9px #efb810'}}>
+                    APPLESHOPMTZ
+                  </Typography>
+                  <Typography variant="h4" gutterBottom >
+                    Productos originales
+                  </Typography>
+                  <Typography variant="h4" color="text.secondary" >
+                    Conoce nuestra amplia gama de productos
+                  </Typography>
+                </Grid>
+                <Grid item sx={{ pt: 5}}>
+                  <Button title={'Catálogo'} onClick={() => handleGoTo('/products')} variant={"contained"} size={"large"} endIcon={<StyleIcon fontSize='large'/>}/>
                 </Grid>
               </Grid>
             </Grid>
@@ -97,7 +125,7 @@ function Index() {
           
         <Box id='products' sx={{ width:'100%', pt: '1.6rem', pb: '1.6rem'}}>
           <Paper elevation={4} sx={{ pb:6 }}>
-            <Grid container justifyContent={'center'} sx={{/* border: 'solid yellow' */}}>
+            <Grid container justifyContent={'center'}>
               <Grid item xs={12} sx={{pt:5, pb: 5}}>
                 <Typography variant='h2' sx={{textShadow: '0px 0px 9px #efb810'}}>COLECCIÓN</Typography>
                 <Divider sx={{pt: 2}}/>
@@ -191,9 +219,10 @@ function Index() {
                   </CardContent>
                   <CardMedia image={ImgLocation} sx={{ height: 300, objectFit: 'contain' }} />
                   <CardActions>
-                    <ChipButton label={'Ubicación'} onClick={() => {}} icon={<LocationOnIcon/>}/>
-                    <ChipButton label={'Ubicación'} onClick={() => {}} icon={<LocationOnIcon/>} sx={styleChipButton}/>
-                    <Button title={'Ir'}  variant={"contained"} size={"small"} startIcon={<Instagram/>}/>
+                    {/* Click on Picture or Button */}
+                    <ChipButton label={'Mostrar Ubicación'} onClick={handleShowLocation} icon={<LocationOnIcon/>}/>
+                    <ChipButton label={'Ubicación'} onClick={handleShowLocation} icon={<LocationOnIcon/>} sx={styleChipButton}/>
+                    <Button title={'Ubicación'}  variant={"contained"} onClick={handleShowLocation} size={"small"} startIcon={<LocationOnIcon/>}/>
                   </CardActions>
                 </Card>
               </Grid>

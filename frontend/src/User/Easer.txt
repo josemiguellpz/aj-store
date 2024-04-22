@@ -1,3 +1,34 @@
+<Box sx={{ width:'100%', pt: '1.6rem', pb: '1.6rem' }}>
+  <Paper elevation={3} sx={{p: 2, maxWidth: '100%', flexGrow: 1, pt: '2.5rem', pb: '2.5rem',}}>
+    <Grid container sx={{ gap: {xs: 1, md: 0} }} padding='2.5rem'>
+      <Grid item >
+        <Box sx={{ width: 300, height: 300, border:'solid #efb810', borderRadius: '50%', overflow: 'hidden', }}>
+          <Img alt="complex" src={logo}  />
+        </Box>
+      </Grid>
+      
+      <Grid item xs={12} sm container >
+        <Grid item xs container direction="column" >
+          <Grid item xs container direction="column" sx={{ justifyContent: {xs: 'center', md: ''} }}>
+            <Typography variant='h2' gutterBottom  component="div" sx={{display: {xs: 'none', md: 'block', textShadow: '0px 0px 9px #efb810'}}}>
+              APPLESHOPMTZ
+            </Typography>
+            <Typography variant="h4" gutterBottom >
+              Productos originales
+            </Typography>
+            <Typography variant="h4" color="text.secondary" >
+              Conoce nuestra amplia gama de productos
+            </Typography>
+          </Grid>
+          <Grid item >
+            <Button title={'Catálogo'} onClick={() => handleGoTo('/products')} variant={"contained"} size={"large"} endIcon={<StyleIcon fontSize='large'/>}/>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
+  </Paper>
+</Box>
+
 <Box id='products' sx={{ width:'100%', pt: '1.6rem', pb: '1.6rem'}}>
   <Typography variant='h2' sx={{pb: '3.2rem', color: '#efb810', textShadow: '0px 0px 9px #efb810'}}>
     <Divider>

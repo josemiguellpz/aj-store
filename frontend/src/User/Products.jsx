@@ -486,7 +486,7 @@ function Products(params) {
           {
             dataIphones.map(({id, product, model, storage, price, condition}) => {
               return (
-                <Grid key={id} container justifyContent={'center'} xs={6} md={6} lg={4} sx={{/* border: 'solid yellow' */}}>
+                <Grid key={id} item justifyContent={'center'} xs={6} md={6} lg={4} sx={{display: 'flex', alignContent: 'center',/* border: 'solid yellow' */}}>
                   <Card sx={{ width: 270, height: 500, marginBottom: 3 }}>
                     <CardMedia image={iPhone15Pro} sx={{ height: 350, objectFit: 'cover'}} />
                     <CardContent>
