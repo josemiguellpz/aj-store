@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import Box from '@mui/material/Box';
 import { Button as Btn } from '@mui/material';
 import ButtonGroup from '@mui/material/ButtonGroup';
@@ -31,12 +32,14 @@ import RadioGroup from '@mui/material/RadioGroup';
 import SearchIcon from '@mui/icons-material/Search';
 import Select from '@mui/material/Select';
 import Slider from '@mui/material/Slider';
+import StorageIcon from '@mui/icons-material/Storage';
 import StyleIcon from '@mui/icons-material/Style';
 import Typography from '@mui/material/Typography';
 import UndoIcon from '@mui/icons-material/Undo';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import Button from '../Components/Button';
 import ChipButton from '../Components/ChipButton';
+import ViewProduct from '../Components/ViewProduct';
 import WhatsAppButton from '../Components/WhatsApp';
 import iPhones from 'C:\\Users\\josemiguel\\Desktop\\images\\AppleShopMtz1.webp';
 import iPhone15Pro from 'C:\\Users\\josemiguel\\Desktop\\images\\iPhones\\iphone-15.jpg';
@@ -120,6 +123,35 @@ function Products(params) {
   const [casesDataForSearch, setCasesDataForSearch] = useState({caseModel: '', casePrice: ''});
   const handleCasesDataForSearch = (e) => setCasesDataForSearch({...casesDataForSearch, [e.target.name]: e.target.value});
 
+  const [selectColor, setSelectColor] = useState("");
+  const handleSelectColor = (event) => {
+    setSelectColor(event.target.value);
+  }
+
+  /* View Product (MODAL)*/
+  //const [selectColor, setSelectColor] = useState('');
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [selectProduct, setSelectProduct] = useState({});
+  const [viewProduct, setViewProduct] = useState(false);
+  const modalRef = useRef(null);
+  const handleOpenViewProduct = (product) => {
+    setSelectProduct(product);
+    setScrollPosition(window.scrollY); // Save scroll position
+    setViewProduct(true);
+  }
+  const handleCloseViewProduct = () => {
+    setViewProduct(false);
+    window.scrollTo(0, scrollPosition); // Restore scroll position
+  }
+
+  const [selectedValue, setSelectedValue] = useState('');
+
+  const handleChange = (event) => {
+    const value = event.target.value;
+    setSelectedValue(value);
+    onChange(value);
+  };
+  
   /**
    * Handles the form submission for searching iPhones.
    * Prevents the default form submission and logs the search data.
@@ -484,25 +516,65 @@ function Products(params) {
 
         <Grid item xs={12} md={9} lg={9.5} style={{width: "100", overflowY: 'auto', display: 'flex', flexWrap: 'wrap', /* border:'solid blue', */}}>
           {
-            dataIphones.map(({id, product, model, storage, price, condition}) => {
+            dataIphones.map(({id, product, model, storage, price, colors, condition, description}) => {
               return (
-                <Grid key={id} item justifyContent={'center'} xs={6} md={6} lg={4} sx={{display: 'flex', alignContent: 'center',/* border: 'solid yellow' */}}>
-                  <Card sx={{ width: 270, height: 500, marginBottom: 3 }}>
-                    <CardMedia image={iPhone15Pro} sx={{ height: 350, objectFit: 'cover'}} />
-                    <CardContent>
+                <Grid key={id} item justifyContent={'center'} xs={6} md={6} lg={4} sx={{/* border: 'solid yellow', */ display: 'flex', alignContent: 'center'}}>
+                  <Card sx={{/* border:'solid red', */ width: "18rem", height: "30rem", marginBottom: 3 }}>
+                    <CardMedia component="img" image={iPhone15Pro} sx={{height: 350, objectFit: 'contain'}} />
+                    <CardContent sx={{/* border: 'solid green' */}}>
                       <Typography gutterBottom variant="h6" component="div">
                         {product} {model}
                       </Typography>
                       <Grid container justifyContent='space-around'>
                         <Chip size='small' label={`${price.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })}`}/>
-                        <Chip size='small' label={`${storage}`}/>
-                        <Chip size='small' label={`${condition}`}/>
+                        <Chip size='small' icon={<StorageIcon/>} label={`${storage}`}/>
+                        <Chip size='small' icon={<AutoAwesomeIcon/>} label={`${condition}`}/>
                       </Grid>
                     </CardContent>
                     <CardActions sx={{ marginBottom: 1}}>
-                      <Grid container justifyContent='space-around'>
-                        <ChipButton label={'Mostrar'} onClick={()=>{}} icon={<MoreVertIcon/>} />
-                        <ChipButton label={'Añadir'} onClick={()=>{}} icon={<AddShoppingCartIcon/>} />
+                      <Grid container gap={1}>
+                        {/* <ChipButton label={'Mostrar'} onClick={()=>handleOpenViewProduct({id, product, model, storage, price, condition, description})} icon={<MoreVertIcon/>} /> */}
+                        <FormControl sx={{ minWidth: 100}}>
+                          <Select
+                            name='color'
+                            label="Color"
+                            variant="standard" 
+                            value={selectColor}
+                            onChange={handleSelectColor}
+                            size='small'
+                            color='warning'
+                            sx={{height: 35}}
+                          >
+                            <MenuItem disabled value="">
+                              <em>Color</em>
+                            </MenuItem>
+                            {colors.map(({label, color}) => (
+                              <MenuItem key={color} value={label}> 
+                                {label} 
+                              </MenuItem>
+                            ))}
+                          </Select>
+                        </FormControl>
+                        <ChipButton 
+                          icon={<VisibilityIcon/>} 
+                          label='Ver producto' 
+                          onClick={()=>{}} 
+                          sx={{
+                            backgroundColor: 'blue',
+                            color: 'inherit',
+                            '&:hover': {background: 'blue', color: '#fff', }
+                          }}
+                        />
+                        <ChipButton 
+                          label={'Añadir al carrito'} 
+                          onClick={()=>{}} 
+                          icon={<AddShoppingCartIcon color='inherit'/>} 
+                          sx={{
+                            backgroundColor: "#efb810", 
+                            color: "black", 
+                            '&:hover': {background: '#efb810', color: '#000', }
+                          }} 
+                        />
                       </Grid>
                     </CardActions>
                   </Card>
@@ -510,6 +582,18 @@ function Products(params) {
               );
             })
           }
+          <ViewProduct 
+            open={viewProduct} 
+            handleClose={handleCloseViewProduct}
+            id={selectProduct.id}
+            product={selectProduct.product}
+            model={selectProduct.model}
+            storage={selectProduct.storage}
+            price={selectProduct.price}
+            condition={selectProduct.condition}
+            description={selectProduct.description}
+            onRendered={() => modalRef.current.focus()}
+          />
         </Grid>
       </Grid>
       <WhatsAppButton/>

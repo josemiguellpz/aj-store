@@ -6,7 +6,7 @@
     "storage": "256 GB",
     "price": 25000,
     "condition": "Nuevo",
-    "colors": ["Azul", "Blanco", "Negro"],
+    "colors": [{ "label": "Red", "value": "#f44336" }, { "label": "Blue", "value": "#2196f3" }, { "label": "Green", "value": "#4caf50" }, { "label": "Yellow", "value": "#ffeb3b" }],
     "images": [],
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna turpis, scelerisque ac nibh eget, egestas rutrum turpis. Fusce at."    
   },
